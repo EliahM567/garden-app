@@ -2,44 +2,49 @@
 
 
 # Get user input for the season and type of plant (Add input)
-season = "summer"  # TODO: Replace with input() to allow user interaction.
-plant_type = "flower"  # TODO: Replace with input() to allow user interaction.
+'''
+    Get user input and convert to lowercase to match
+    all input types.
+'''
+season = input("Enter the season (summer/winter): ").lower()
+plant_type = input("Enter the plant type (flower/vegetable): ").lower()
 
 # Function to generate advice (Add function here)
-advice = ""
+def get_gardening_advice(season, plant_type):
+    '''
+        This function uses dictionaries to store advice for plants
+        and seasons.
 
-# Dictionary for storing advice for seasons (Add here)
+        The advice is then determined by entered season and plant type.
+        For incorrect input, a no advice message will be displayed.
+    '''
+
+    # Dictionary for storing advice for seasons
+    season_advice = {
+        "summer": "Water your plants regularly and provide some shade.\n",
+        "winter": "Protect your plants from frost with covers.\n"
+    }
+
+    # Dictionary storing advice for plants
+    plant_advice = {
+        "flower": "Use fertiliser to encourage blooms.",
+        "vegetable": "Keep an eye out for pests!"
+    }
+
+    # Determine advice based on the season
+    advice = season_advice.get(season, "No advice for this season.\n")
+
+    # Determine advice based on the plant type
+    advice += plant_advice.get(
+        plant_type,
+        "No advice for this type of plant."
+    )
+
+    return advice
 
 
-# Dictionary storing advice for plants (Add here)
+# Generate and display the advice
+advice = get_gardening_advice(season, plant_type)
 
-
-# Determine advice based on the season (Replace with dictionary)
-if season == "summer":
-    advice += "Water your plants regularly and provide some shade.\n"
-elif season == "winter":
-    advice += "Protect your plants from frost with covers.\n"
-else:
-    advice += "No advice for this season.\n"
-
-# Determine advice based on the plant type (Replace with dictionary)
-if plant_type == "flower":
-    advice += "Use fertiliser to encourage blooms."
-elif plant_type == "vegetable":
-    advice += "Keep an eye out for pests!"
-else:
-    advice += "No advice for this type of plant."
-
-
-# Generate and Display the advice
-
-
-# Print the generated advice
+print("\nGardening Advice:")
 print(advice)
-
-# Remove TODO list
-# TODO: Examples of possible features to add:
-# - Add detailed comments explaining each block of code.
-# - Refactor the code into functions for better readability and modularity.
-# - Store advice in a dictionary for multiple plants and seasons.
-# - Recommend plants based on the entered season.
